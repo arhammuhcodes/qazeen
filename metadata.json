@@ -1,0 +1,6 @@
+{
+  "name": "Qazeen - Chitrali Topi",
+  "description": "An elegant, interactive brand and e-commerce portal for traditional handspun wool Chitrali caps (topi), featuring custom design customizers, story galleries, and premium shop controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
