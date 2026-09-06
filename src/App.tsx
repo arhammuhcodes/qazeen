@@ -13,16 +13,22 @@ import { CartDrawer } from "./components/CartDrawer";
 
 import { CapProduct, CartItem, ColorOption, CustomCapConfig, Review } from "./types";
 import { PRODUCTS, REVIEWS } from "./data";
+import topiBanner from "./assets/images/topi_banner.png";
+import shilajitBanner from "./assets/images/shilajit_banner.png";
+import winterSaleBanner from "./assets/images/winter_sale_banner.png";
+import heritageBanner from "./assets/images/heritage_banner.png";
+import craftsmanImage from "./assets/images/craftsman_making_topi.png";
+import qazeenLogo from "./assets/images/qazeen_logo.png";
 
 import { Sparkles, ShoppingBag, ArrowUpRight, ArrowLeft, ShieldCheck, MapPin, Heart, ChevronRight, MessageSquareQuote } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 // Register all 5 generated premium high-resolution assets
 const BANNERS = [
-  "/src/assets/images/topi_banner.png",
-  "/src/assets/images/shilajit_banner.png",
-  "/src/assets/images/winter_sale_banner.png",
-  "/src/assets/images/heritage_banner.png"
+  topiBanner,
+  shilajitBanner,
+  winterSaleBanner,
+  heritageBanner
 ];
 
 const BANNER_CAPTIONS = [
@@ -47,9 +53,6 @@ const BANNER_CAPTIONS = [
     action: "Our Weavers"
   }
 ];
-
-const craftsmanImg = "/src/assets/images/craftsman_making_topi.png";
-const qazeenLogo = "/src/assets/images/qazeen_logo.png";
 
 export default function App() {
   const [cart, setCart] = useState<CartItem[]>([
@@ -408,7 +411,7 @@ export default function App() {
 
             {/* D. OUR STORY (Legacy Story) */}
             <section id="legacy-story" className="border-t border-black/10 pt-16">
-              <CraftHistory craftsmanImage={craftsmanImg} />
+              <CraftHistory craftsmanImage={craftsmanImage} />
             </section>
 
             {/* E. USER EXPERIENCE SECTION */}

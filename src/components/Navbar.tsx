@@ -7,8 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Search, User, ShoppingBag, X, Check, ChevronDown, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { CartItem, CapProduct } from "../types";
-
-const qazeenLogo = "/src/assets/images/qazeen_logo.png";
+import qazeenLogo from "../assets/images/qazeen_logo.png";
 
 export const CURRENCY_SYMBOLS: Record<string, string> = {
   USD: "$",
