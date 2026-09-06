@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Search, User, ShoppingBag, X, Check, ChevronDown, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { CartItem, CapProduct } from "../types";
-import qazeenLogo from "../assets/images/qazeen_logo.png";
+import qazeenLogo from "../assets/images/qazeen logo.png";
 
 export const CURRENCY_SYMBOLS: Record<string, string> = {
   USD: "$",
@@ -246,7 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <img
                 src={qazeenLogo}
                 alt="Qazeen Logo"
-                className="h-10 md:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-102 mix-blend-multiply"
+                className="h-10 w-10 md:h-12 md:w-12 rounded-full object-contain transition-all duration-300 group-hover:scale-102"
                 referrerPolicy="no-referrer"
               />
               {/* English + Urdu brand typography pairing - requested by user */}

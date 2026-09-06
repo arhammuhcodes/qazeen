@@ -11,34 +11,6 @@ interface CraftHistoryProps {
   craftsmanImage: string;
 }
 
-const CRAFT_STEPS = [
-  {
-    step: "01",
-    title: "Alpine Shearing",
-    desc: "We exclusively gather thick early-spring wool fleece from pure-breed sheep grazing at heights over 10,000 feet in the Hindu Kush mountains, delivering organic warmth insulation."
-  },
-  {
-    step: "02",
-    title: "Mineral Water washing",
-    desc: "The raw wool fleece is transported to the thermal springs of Garam Chashma, where minerals wash and soften the sheep oil, yielding pristine bounce without harsh chemical detergents."
-  },
-  {
-    step: "03",
-    title: "Hand-Carding & Shuttle Weaving",
-    desc: "Elders hand-card the loose wool into fine clouds, then hand-spin it using domestic wooden spindles (charkhas). The thread is woven on wooden foot-looms into narrow 10-yard rolls called 'Patti' (Shu)."
-  },
-  {
-    step: "04",
-    title: "Continuous Hot-Trampling",
-    desc: "To reach the compact windproof texture, the raw woven cloth is soaked in hot water, folded, and stamped continuously by feet for hours. This shrinks and locks the fibers into felt-like armor."
-  },
-  {
-    step: "05",
-    title: "Rim Rolling & Crown Molding",
-    desc: "Master stitchers hand-measure and sew the flat crown. The woolen tube is rolled upwards step-by-step into a tight tubular rim that maintains its pristine geometric fold over a lifetime."
-  }
-];
-
 export const CraftHistory: React.FC<CraftHistoryProps> = ({ craftsmanImage }) => {
   return (
     <div className="space-y-16 relative">
@@ -117,52 +89,6 @@ export const CraftHistory: React.FC<CraftHistoryProps> = ({ craftsmanImage }) =>
           </motion.div>
         </div>
 
-      </div>
-
-      {/* SECTION: STEP-BY-STEP WOOL TIMELINE COMPONENT (The Craft Process) */}
-      <div className="bg-black/[0.02] rounded-xl p-6 md:p-10 border border-black/10 relative overflow-hidden">
-        
-        {/* Background number watermark for Void aesthetic */}
-        <div className="absolute -bottom-10 -right-10 text-[180px] font-serif italic text-black/[0.015] leading-none pointer-events-none select-none">
-          04
-        </div>
-
-        <div className="space-y-3 mb-10 max-w-xl">
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/50 block">
-            CHRONICLED CHITRALI TIMELINE
-          </span>
-          <h3 className="text-stone-900 font-serif font-semibold text-2xl md:text-3xl">
-            Tracing raw wool to insulated crown
-          </h3>
-          <div className="h-[1px] w-12 bg-black mt-2"></div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-10 relative">
-          {CRAFT_STEPS.map((step, idx) => (
-            <div key={idx} className="relative z-10 flex flex-col items-start space-y-3 group">
-              
-              {/* Artistic step numbering instead of fat bubbles */}
-              <div className="flex items-end gap-1.5">
-                <span className="font-serif italic text-3xl text-black/90 group-hover:text-amber-800 transition-colors">
-                  {step.step}
-                </span>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-black/30 font-bold mb-1">/05</span>
-              </div>
-
-              <div className="h-[1px] w-8 bg-black/20 group-hover:w-16 transition-all duration-300" />
-
-              <div className="space-y-1">
-                <h5 className="font-sans font-bold text-black text-xs uppercase tracking-wider">
-                  {step.title}
-                </h5>
-                <p className="text-black/60 text-xs leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-
-            </div>
-          ))}
-        </div>
       </div>
 
     </div>

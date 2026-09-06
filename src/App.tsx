@@ -18,7 +18,7 @@ import shilajitBanner from "./assets/images/shilajit_banner.png";
 import winterSaleBanner from "./assets/images/winter_sale_banner.png";
 import heritageBanner from "./assets/images/heritage_banner.png";
 import craftsmanImage from "./assets/images/craftsman_making_topi.png";
-import qazeenLogo from "./assets/images/qazeen_logo.png";
+import qazeenLogo from "./assets/images/qazeen logo.png";
 
 import { Sparkles, ShoppingBag, ArrowUpRight, ArrowLeft, ShieldCheck, MapPin, Heart, ChevronRight, MessageSquareQuote } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
@@ -29,29 +29,6 @@ const BANNERS = [
   shilajitBanner,
   winterSaleBanner,
   heritageBanner
-];
-
-const BANNER_CAPTIONS = [
-  {
-    title: "Chitrali Pakol & Topi",
-    subtitle: "Your crowning honor, handspun directly in the mountains.",
-    action: "Explore Caps"
-  },
-  {
-    title: "Pure Golden Shilajit",
-    subtitle: "Organic, cold-refined mountain resin carrying 85+ vital trace elements.",
-    action: "Discover Herbs"
-  },
-  {
-    title: "Grand Autumn Winter Sale",
-    subtitle: "Limited time 50% privilege on selected handspun wool lots.",
-    action: "Secure Offer"
-  },
-  {
-    title: "Our Heritage, Your Style",
-    subtitle: "Every thread tells a centuries-old story of Himalayan artisans.",
-    action: "Our Weavers"
-  }
 ];
 
 export default function App() {
@@ -272,55 +249,10 @@ export default function App() {
                 <div className="relative w-full overflow-hidden select-none cursor-grab active:cursor-grabbing">
                   <img
                     src={BANNERS[activeBannerIdx]}
-                    alt={BANNER_CAPTIONS[activeBannerIdx].title}
+                    alt="Qazeen handcrafted heritage banner"
                     className="w-full h-auto block select-none pointer-events-none transition-all duration-1000 ease-in-out"
                     referrerPolicy="no-referrer"
                   />
-                  
-                  {/* Subtle Dark Bottom Gradient Mask */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end p-6 md:p-12 text-left animate-fade-in" />
-
-                  {/* Caption Overlay */}
-                  <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 max-w-lg space-y-2.5 z-10 text-white pointer-events-none">
-                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-amber-300 block">
-                      Handcrafted Masterpieces
-                    </span>
-                    <h2 className="text-xl md:text-3.5xl font-serif italic font-bold tracking-tight">
-                      {BANNER_CAPTIONS[activeBannerIdx].title}
-                    </h2>
-                    <p className="text-white/80 text-[11px] md:text-sm font-sans font-medium leading-relaxed">
-                      {BANNER_CAPTIONS[activeBannerIdx].subtitle}
-                    </p>
-                    
-                    <div className="pt-2 flex items-center gap-4 pointer-events-auto">
-                      <button
-                        onClick={() => {
-                          if (activeBannerIdx === 0) {
-                            setActiveTab("pakol");
-                          } else if (activeBannerIdx === 1) {
-                            setActiveTab("ingredients");
-                          } else if (activeBannerIdx === 2) {
-                            setActiveTab("choga");
-                          } else {
-                            setActiveTab("shawl");
-                          }
-                        }}
-                        className="bg-white text-stone-900 border-none font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-widest px-4 md:px-5 py-2.5 rounded-lg shadow-sm hover:bg-stone-100 cursor-pointer transition-colors"
-                      >
-                        {BANNER_CAPTIONS[activeBannerIdx].action}
-                      </button>
-
-                      <button
-                        onClick={() => {
-                          const el = document.getElementById("new-arrivals-section");
-                          if (el) el.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="text-white border-b-2 border-white/50 hover:border-white font-sans text-[9px] md:text-[10px] uppercase tracking-widest py-1 cursor-pointer transition-all"
-                      >
-                        Browse New Arrivals
-                      </button>
-                    </div>
-                  </div>
                 </div>
 
                 {/* TRIANGULAR DOT INDICATORS */}
@@ -372,17 +304,7 @@ export default function App() {
               </div>
             </section>
 
-            {/* B. BRAND STATEMENT SECTION */}
-            <section className="max-w-4xl mx-auto text-center py-4 space-y-4">
-              <h1 className="text-3xl md:text-5xl font-serif italic font-semibold text-[#1a1a1a] tracking-tight leading-none">
-                Organic, Ancient, Meticulous.
-              </h1>
-              <p className="text-black/55 font-sans text-[9.5px] md:text-[10.5px] tracking-[0.25em] uppercase leading-relaxed max-w-xl mx-auto font-bold">
-                Washed in Garam Chashma springs, spun on traditional wool-spinning spindles, and packed directly inside luxury cedar-wood cases.
-              </p>
-            </section>
-
-            {/* C. NEW ARRIVALS CATALOG SECTION (Primary highlight on the homepage) */}
+            {/* B. NEW ARRIVALS CATALOG SECTION (Primary highlight on the homepage) */}
             <section id="new-arrivals-section" className="pt-4 space-y-8">
               <div className="space-y-1.5 border-b border-black/10 pb-4 text-center max-w-xl mx-auto">
                 <span className="text-[9.5px] font-bold uppercase tracking-[0.35em] text-[#5C56CD]">
@@ -707,7 +629,7 @@ export default function App() {
               <img
                 src={qazeenLogo}
                 alt="Qazeen Brand Marks"
-                className="h-9 w-auto object-contain brightness-0 invert"
+                className="h-10 w-10 md:h-12 md:w-12 rounded-full object-contain"
                 referrerPolicy="no-referrer"
               />
               <span className="text-stone-50 font-sans font-bold tracking-wider uppercase text-sm">
