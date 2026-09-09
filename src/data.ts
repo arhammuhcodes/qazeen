@@ -13,23 +13,12 @@ export const COLOR_OPTIONS = {
   CEREMONIAL_RED: { name: "Heritage Crimson Rose (سرخ)", hex: "#801818", bgClass: "bg-[#801818]" },
 };
 
+export const getColorLabel = (colorName: string) => {
+  const colorMatch = colorName.match(/White|Brown|Grey|Black|Red/i);
+  return colorMatch ? colorMatch[0] : colorName.split(" ")[0];
+};
+
 export const PRODUCTS: CapProduct[] = [
-  {
-    id: "royal-neelam-ivory",
-    name: "Royal White Chitrali Pakol",
-    urduName: "نیلم چترالی ٹوپی - شاہی سفید",
-    description: "The absolute zenith of Chitrali craft. Hand-woven from pure, ultra-fine white lamb's wool (Shu). Features a soft luxurious double-molded rim and an optional premium peacock feather mount.",
-    price: 85,
-    rating: 4.9,
-    reviewsCount: 142,
-    colors: [COLOR_OPTIONS.IVORY, COLOR_OPTIONS.WALNUT, COLOR_OPTIONS.STONE_GREY],
-    sizes: ["S (55-56cm)", "M (57-58cm)", "L (59-60cm)", "XL (61-62cm)"],
-    imageUrl: "https://chitralisaughat.com/wp-content/uploads/2025/11/chitrali-cap-7-600x600.webp",
-    isFeatured: true,
-    hasFeatherIncluded: true,
-    category: "pakol",
-    storyDescription: "Spun from the finest early spring fleece of the pure-breed mountain sheep. Each Royal white cap takes an experienced weaver over 12 days of meticulous loom work and manual molding."
-  },
   {
     id: "classic-walnut-pakol",
     name: "Classic Walnut Chitrali Pakol",
@@ -77,22 +66,6 @@ export const PRODUCTS: CapProduct[] = [
     hasFeatherIncluded: false,
     category: "pakol",
     storyDescription: "Crafted directly in Garam Chashma (the thermal water valleys), this wool gets washed in pure mineral water springs, granting it unmatched structural bounce."
-  },
-  {
-    id: "ceremonial-crimson-heritage",
-    name: "Ceremonial Markhor Pakol",
-    urduName: "چنبیلی و لال چترالی ٹوپی - شاہکار سرخ",
-    description: "A rare collector's edition. Hand-dyed using organic wild madder roots to retrieve an rich, deep heritage crimson rose hue. Beautifully styled for weddings and historical celebrations.",
-    price: 75,
-    rating: 5.0,
-    reviewsCount: 31,
-    colors: [COLOR_OPTIONS.CEREMONIAL_RED, COLOR_OPTIONS.IVORY],
-    sizes: ["M (57-58cm)", "L (59-60cm)"],
-    imageUrl: "https://chitralisaughat.com/wp-content/uploads/2025/11/Chitrali-Cap-with-Markhor-Design-2-600x600.webp",
-    isFeatured: true,
-    hasFeatherIncluded: true,
-    category: "pakol",
-    storyDescription: "Representing royal gifts passed down between Kings of Chitral (Mehtars). Strictly limited to small batches of 5 pieces per season due to the complex organic dyeing cycle."
   },
   {
     id: "pure-mountain-shilajit",

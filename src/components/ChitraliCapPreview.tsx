@@ -176,7 +176,7 @@ export const ChitraliCapPreview: React.FC<ChitraliCapPreviewProps> = ({
               </motion.g>
             )}
 
-            {/* PHEASANT FEATHER DESIGN (Classic bird feather) */}
+            {}
             {featherType === "pheasant" && (
               <motion.g
                 initial={{ opacity: 0, scale: 0.6, y: 30, rotate: 10 }}

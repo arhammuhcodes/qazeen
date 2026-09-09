@@ -84,6 +84,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     return `${symbol} ${finalPrice.toLocaleString()}`;
   };
 
+  const formatCartPrice = (item: CartItem) => {
+    if (currency === "PKR" && item.product.category === "pakol") {
+      const basePrice = 2000;
+      const featherPrice = item.addFeather && !item.product.hasFeatherIncluded ? 500 : 0;
+      return `Rs ${(basePrice + featherPrice).toLocaleString()}`;
+    }
+    const unitPrice = item.product.price + (item.addFeather && !item.product.hasFeatherIncluded ? item.featherPrice : 0);
+    return formatPrice(unitPrice);
+  };
+
   // Calculations
   const subtotal = cart.reduce((acc, item) => {
     const itemUnitPrice = item.product.price + (item.addFeather && !item.product.hasFeatherIncluded ? item.featherPrice : 0);
@@ -93,6 +103,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const discountAmount = subtotal * appliedDiscount;
   const shippingFee = subtotal > 100 || promoCode.toUpperCase() === "FREEFEDEX" ? 0 : 8;
   const total = subtotal - discountAmount + shippingFee;
+  const displaySubtotal = cart.reduce((acc, item) => {
+    const unitPrice = currency === "PKR" && item.product.category === "pakol"
+      ? 2000 + (item.addFeather && !item.product.hasFeatherIncluded ? 500 : 0)
+      : item.product.price + (item.addFeather && !item.product.hasFeatherIncluded ? item.featherPrice : 0);
+    return acc + unitPrice * item.quantity;
+  }, 0);
+  const displayDiscountAmount = displaySubtotal * appliedDiscount;
 
   // Apply Coupon Logic
   const handleApplyPromo = () => {
@@ -287,11 +304,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                             {/* Pricing summary */}
                             <div className="text-right">
                               <span className="text-stone-900 font-bold font-mono text-xs">
-                                {formatPrice(unitPrice * item.quantity)}
+                                {currency === "PKR" && item.product.category === "pakol"
+                                  ? `Rs ${((item.addFeather && !item.product.hasFeatherIncluded ? 2500 : 2000) * item.quantity).toLocaleString()}`
+                                  : formatPrice(unitPrice * item.quantity)}
                               </span>
                               {item.quantity > 1 && (
                                 <p className="text-[9.5px] text-stone-400">
-                                  {formatPrice(unitPrice)} each
+                                  {formatCartPrice(item)} each
                                 </p>
                               )}
                             </div>
@@ -581,23 +600,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 <div className="space-y-1.5 text-xs font-sans text-stone-600">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span className="font-mono text-stone-900 font-bold">{formatPrice(subtotal)}</span>
+                    <span className="font-mono text-stone-900 font-bold">{currency === "PKR" ? `Rs ${displaySubtotal.toLocaleString()}` : formatPrice(subtotal)}</span>
                   </div>
                   {appliedDiscount > 0 && (
                     <div className="flex justify-between text-emerald-700">
                       <span>Promo Discount (-15%)</span>
-                      <span className="font-mono font-bold">-{formatPrice(discountAmount)}</span>
+                      <span className="font-mono font-bold">-{currency === "PKR" ? `Rs ${displayDiscountAmount.toLocaleString()}` : formatPrice(discountAmount)}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span>International Insured Carriage</span>
                     <span className="font-mono text-stone-900 font-bold">
-                      {shippingFee === 0 ? "FREE" : formatPrice(shippingFee)}
+                      {shippingFee === 0 ? "FREE" : currency === "PKR" ? "Rs 2,224" : formatPrice(shippingFee)}
                     </span>
                   </div>
                   <div className="flex justify-between text-sm text-stone-900 font-bold border-t border-stone-200 pt-2 font-serif">
                     <span>Total Bill</span>
-                    <span className="text-amber-950 font-bold font-mono text-base">{formatPrice(total)}</span>
+                      <span className="text-amber-950 font-bold font-mono text-base">{currency === "PKR" ? `Rs ${(displaySubtotal - displayDiscountAmount + (shippingFee === 0 ? 0 : 2224)).toLocaleString()}` : formatPrice(total)}</span>
                   </div>
                 </div>
 

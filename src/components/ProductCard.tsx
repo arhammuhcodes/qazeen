@@ -6,6 +6,7 @@
 import React, { useState } from "react";
 import { Star, ShieldAlert, Sparkles, ShoppingCart } from "lucide-react";
 import { CapProduct, ColorOption } from "../types";
+import { getColorLabel } from "../data";
 import { motion } from "motion/react";
 
 interface ProductCardProps {
@@ -51,6 +52,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
     const finalPrice = Math.round(usdAmount * factor);
     return `${symbol} ${finalPrice.toLocaleString()}`;
   };
+
+  const formatProductPrice = (usdAmount: number) => {
+    if (currency === "PKR" && product.category === "pakol") {
+      return "Rs 2,000";
+    }
+    return formatPrice(usdAmount);
+  };
+
+  const formatFeatherPrice = () => currency === "PKR" && product.category === "pakol" ? "Rs 500" : formatPrice(8);
 
   const getFeatherAdditionalPrice = () => {
     if (product.hasFeatherIncluded) return 0;
@@ -111,7 +121,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
               {product.name}
             </h3>
             <span className="text-stone-900 font-mono font-bold text-sm mt-1">
-              {formatPrice(currentPrice)}
+              {currency === "PKR" && product.category === "pakol" && addFeather && !product.hasFeatherIncluded
+                ? "Rs 2,500"
+                : formatProductPrice(product.price)}
             </span>
           </div>
 
@@ -131,20 +143,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           <div>
             <div className="flex justify-between text-[9px] font-bold uppercase tracking-[0.18em] text-black/50 mb-1.5">
               <span>COLOR BLEND:</span>
-              <span className="text-[#1a1a1a] font-bold">{selectedColor.name.split(" ")[0]}</span>
+              <span className="text-[#1a1a1a] font-bold">{getColorLabel(selectedColor.name)}</span>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               {product.colors.map((color) => {
                 const isActive = selectedColor.hex === color.hex;
                 return (
                   <button
                     key={color.hex}
                     onClick={() => setSelectedColor(color)}
-                    className={`h-6.5 w-6.5 rounded-full cursor-pointer flex items-center justify-center transition-all ${color.bgClass} ${
+                    className="flex min-w-10 flex-col items-center gap-1 cursor-pointer"
+                    title={getColorLabel(color.name)}
+                    aria-label={`Select ${getColorLabel(color.name)} color`}
+                  >
+                    <span className={`h-6.5 w-6.5 rounded-full flex items-center justify-center transition-all ${color.bgClass} ${
                       isActive ? "ring-2 ring-black ring-offset-2 scale-110 shadow-xs" : "border border-black/10 hover:scale-105"
-                    }`}
-                    title={color.name}
-                  />
+                    }`} />
+                    <span className="text-[9px] font-bold uppercase tracking-wide text-black/60">
+                      {getColorLabel(color.name)}
+                    </span>
+                  </button>
                 );
               })}
             </div>
@@ -183,7 +201,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
                 Attach Peacock Feather
               </span>
               <span className="text-[10px] text-black/50">
-                {product.hasFeatherIncluded ? "Included with premium design" : `Add ethically-sourced feather (+${formatPrice(8)})`}
+                {product.hasFeatherIncluded ? "Included with premium design" : `Add ethically-sourced feather (+${formatFeatherPrice()})`}
               </span>
             </div>
             <input
@@ -202,7 +220,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
             className={`w-full py-3 rounded-lg font-sans font-bold text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all shadow-xs mt-1 border border-black/10 ${isAvailable ? "bg-[#1a1a1a] hover:bg-black text-white cursor-pointer" : "bg-stone-200 text-stone-500 cursor-not-allowed"}`}
           >
             <ShoppingCart className="w-4 h-4" />
-            <span>{isAvailable ? `Add to Cart — ${formatPrice(currentPrice)}` : "Out of Stock"}</span>
+            <span>{isAvailable ? `Add to Cart — ${currency === "PKR" && product.category === "pakol" && addFeather && !product.hasFeatherIncluded ? "Rs 2,500" : formatProductPrice(product.price)}` : "Out of Stock"}</span>
           </button>
         </div>
       </div>

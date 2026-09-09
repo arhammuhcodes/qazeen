@@ -20,7 +20,7 @@ import heritageBanner from "./assets/images/heritage_banner.png";
 import craftsmanImage from "./assets/images/craftsman_making_topi.png";
 import qazeenLogo from "./assets/images/qazeen logo.png";
 
-import { Sparkles, ShoppingBag, ArrowUpRight, ArrowLeft, ShieldCheck, MapPin, Heart, ChevronRight, MessageSquareQuote } from "lucide-react";
+import { Sparkles, ShoppingBag, ArrowUpRight, ArrowLeft, ShieldCheck, MapPin, Heart, ChevronRight, MessageSquareQuote, Phone, Mail, Instagram, Facebook } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 // Register all 5 generated premium high-resolution assets
@@ -32,22 +32,11 @@ const BANNERS = [
 ];
 
 export default function App() {
-  const [cart, setCart] = useState<CartItem[]>([
-    // Preload a starter item so they can instantly check the cart drawer mechanics!
-    {
-      id: "royal-neelam-ivory-Royal Ivory White-L (59-60cm)-true",
-      product: PRODUCTS[0],
-      selectedColor: { name: "Royal Ivory White (سیفد)", hex: "#F3F4F1", bgClass: "bg-[#F3F4F1]" },
-      selectedSize: "L (59-60cm)",
-      addFeather: true,
-      featherPrice: 0,
-      quantity: 1
-    }
-  ]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [reviewsList, setReviewsList] = useState<Review[]>(REVIEWS);
-  const [currency, setCurrency] = useState<string>("USD");
+  const [currency, setCurrency] = useState<string>("PKR");
   
   // Tab routing states
   const [activeTab, setActiveTab] = useState<string>("home");
@@ -199,7 +188,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f7f5f2] selection:bg-black/10 selection:text-black overflow-x-hidden antialiased">
+    <div className="min-h-screen bg-[#f7f5f2] selection:bg-amber-200 selection:text-stone-900 overflow-x-hidden antialiased">
       
       {/* 1. COMPLIMENTARY REGISTERED DISPATCH ROW */}
       <div className="bg-[#1a1a1a] text-stone-100 text-center py-2 px-4 border-b border-black/10 flex items-center justify-center gap-2 text-[8px] md:text-[9.5px] font-sans font-bold tracking-[0.25em] uppercase">
@@ -672,14 +661,35 @@ export default function App() {
           {/* Contacts */}
           <div className="space-y-3">
             <h4 className="text-stone-50 font-sans text-xs uppercase tracking-widest font-bold">
-              GLOBAL CUSTOMS SUPPORT
+              CONTACT QAZEEN
             </h4>
             <p className="text-stone-400 text-xs leading-relaxed font-sans mt-1">
-              Arrives wrapped inside tissue papers, cradled by solid Kashmiri wood sleeves. For private sizing commissions, reach our desk:
+              For private sizing commissions and handcrafted heritage orders, reach our desk:
             </p>
-            <p className="text-xs font-mono font-bold text-stone-100 hover:text-amber-300">
-              support@qazeenhandicrafts.com
-            </p>
+            <div className="flex flex-col items-start gap-2 text-xs font-mono font-bold">
+              <div className="flex items-center gap-2 text-stone-100">
+                <Phone className="w-3.5 h-3.5" />
+                <a href="tel:+923065000705" className="hover:text-amber-300 transition-colors">0306 5000705</a>
+                <span>/</span>
+                <a href="tel:+923485000705" className="hover:text-amber-300 transition-colors">0348 5000705</a>
+              </div>
+              <a href="https://wa.me/923485000705" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-stone-100 hover:text-amber-300 transition-colors">
+                <span className="text-[10px] uppercase tracking-wider">WhatsApp</span>
+                0348 5000705
+              </a>
+              <a href="mailto:Email.Qazeen.net@gmail.com" className="flex items-center gap-2 text-stone-100 hover:text-amber-300 transition-colors">
+                <Mail className="w-3.5 h-3.5" />
+                Email.Qazeen.net@gmail.com
+              </a>
+              <div className="flex items-center gap-3 pt-1">
+                <a href="https://www.instagram.com/qazi_azmat1991?stkn=cGRnZHppOWsxdjkx" target="_blank" rel="noreferrer" aria-label="Qazeen on Instagram" className="text-stone-100 hover:text-amber-300 transition-colors">
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a href="https://www.facebook.com/share/1KAQ7nWtbw/" target="_blank" rel="noreferrer" aria-label="Qazeen on Facebook" className="text-stone-100 hover:text-amber-300 transition-colors">
+                  <Facebook className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
 
         </div>

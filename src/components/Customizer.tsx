@@ -8,7 +8,7 @@ import { Sparkles, ShoppingCart, HelpCircle, ShieldAlert, BadgeCheck, Check } fr
 import { motion, AnimatePresence } from "motion/react";
 import { ColorOption, CustomCapConfig, CapProduct } from "../types";
 import { ChitraliCapPreview } from "./ChitraliCapPreview";
-import { COLOR_OPTIONS } from "../data";
+import { COLOR_OPTIONS, getColorLabel } from "../data";
 
 interface CustomizerProps {
   onAddCustomToCart: (customConfig: CustomCapConfig, calculatedPrice: number) => void;
@@ -115,7 +115,7 @@ export const Customizer: React.FC<CustomizerProps> = ({ onAddCustomToCart, curre
               Your Custom Masterpiece
             </h3>
             <p className="text-stone-500 text-xs mt-1">
-              Refined by hand: {activeColor.name.split(" ")[0]} · {activeSize} fits
+              Refined by hand: {getColorLabel(activeColor.name)} · {activeSize} fits
             </p>
           </div>
 
@@ -202,7 +202,7 @@ export const Customizer: React.FC<CustomizerProps> = ({ onAddCustomToCart, curre
                       {isSelected && <Check className="w-4 h-4 text-amber-900 mix-blend-difference" />}
                     </div>
                     <span className="text-[10px] uppercase font-mono tracking-wider text-stone-800 leading-tight">
-                      {col.name.split(" ")[0]}
+                      {getColorLabel(col.name)}
                     </span>
                   </button>
                 );
