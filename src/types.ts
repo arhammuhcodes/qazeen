@@ -21,6 +21,7 @@ export interface CapProduct {
   sizes: string[];
   imageUrl: string;
   isFeatured?: boolean;
+  isAvailable?: boolean;
   hasFeatherIncluded?: boolean;
   storyDescription?: string;
   category?: "pakol" | "choga" | "waistcoat" | "shawl" | "coat" | "ingredients";

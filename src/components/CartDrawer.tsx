@@ -375,7 +375,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Islamabad, Pakistan"
+                      placeholder="e.g. Peshawar, Warsak Road"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-stone-900 focus:outline-none focus:border-amber-800"

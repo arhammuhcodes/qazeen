@@ -18,6 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
   const [selectedColor, setSelectedColor] = useState<ColorOption>(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0] || "M (57-58cm)");
   const [addFeather, setAddFeather] = useState<boolean>(product.hasFeatherIncluded || false);
+  const isAvailable = product.isAvailable !== false && (product.category === "pakol" || product.id === "pure-mountain-shilajit");
 
   const getConversionFactor = (c: string) => {
     switch (c) {
@@ -63,7 +64,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="bg-white/60 border border-black/10 rounded-xl overflow-hidden shadow-2xs hover:shadow-sm hover:border-black/25 transition-all duration-300 flex flex-col justify-between"
+      className={`bg-white/60 border border-black/10 rounded-xl overflow-hidden shadow-2xs transition-all duration-300 flex flex-col justify-between ${isAvailable ? "hover:shadow-sm hover:border-black/25" : "opacity-75"}`}
     >
       {/* Product Image Stage */}
       <div className="relative aspect-4/3 bg-black/[0.02] overflow-hidden group">
@@ -84,6 +85,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
           {product.hasFeatherIncluded && (
             <span className="bg-white/95 border border-black/15 text-[#1a1a1a] text-[9px] uppercase font-bold tracking-[0.18em] px-2.5 py-1 rounded shadow-2xs">
               Feather Included
+            </span>
+          )}
+          {!isAvailable && (
+            <span className="bg-red-950 text-white text-[9px] uppercase font-bold tracking-[0.18em] px-2.5 py-1 rounded shadow-2xs">
+              Out of Stock
             </span>
           )}
         </div>
@@ -191,11 +197,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
 
           {/* ADD TO CART ACTION BUTTON */}
           <button
+            disabled={!isAvailable}
             onClick={() => onAddToCart(product, selectedColor, selectedSize, addFeather)}
-            className="w-full bg-[#1a1a1a] hover:bg-black text-white hover:text-white py-3 rounded-lg font-sans font-bold text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs mt-1 border border-black/10"
+            className={`w-full py-3 rounded-lg font-sans font-bold text-[10px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all shadow-xs mt-1 border border-black/10 ${isAvailable ? "bg-[#1a1a1a] hover:bg-black text-white cursor-pointer" : "bg-stone-200 text-stone-500 cursor-not-allowed"}`}
           >
             <ShoppingCart className="w-4 h-4" />
-            <span>Add to Cart — {formatPrice(currentPrice)}</span>
+            <span>{isAvailable ? `Add to Cart — ${formatPrice(currentPrice)}` : "Out of Stock"}</span>
           </button>
         </div>
       </div>

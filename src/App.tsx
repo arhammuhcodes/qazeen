@@ -196,7 +196,6 @@ export default function App() {
     PRODUCTS[4], // Ceremonial Crimson Heritage Cap
     PRODUCTS[5], // Pure Himalayan Shilajit
     PRODUCTS[6], // Valley Wild Thyme Honey
-    PRODUCTS[9], // Royal Chitral Gold Saffron
   ];
 
   return (
@@ -652,16 +651,7 @@ export default function App() {
             </h4>
             <ul className="text-stone-400 text-xs space-y-2 font-sans">
               <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" /> Garam Chashma washing, Chitral
-              </li>
-              <li className="flex items-center gap-1.5 font-sans">
-                <MapPin className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" /> Ayun Footlooms Valley, Upper Chitral
-              </li>
-              <li className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" /> Royal Wardrobes, Peshawar
-              </li>
-              <li className="flex items-center gap-1.5 font-sans">
-                <MapPin className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" /> Jinnah Road dispatch, Islamabad
+                <MapPin className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" /> Peshawar, Warsak Road
               </li>
             </ul>
           </div>
@@ -695,7 +685,7 @@ export default function App() {
         </div>
 
         {/* Rights strip */}
-        <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center text-[10.5px] text-stone-500 font-mono gap-4">
+        <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center text-[10.5px] text-stone-300 font-mono gap-4">
           <p>© 2026 Qazeen Crafts Ltd. All rights reserved. Registered heritage business under Pakistani Handicrafts Guild.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-stone-200">Terms of Origin</a>
